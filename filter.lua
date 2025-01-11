@@ -21,7 +21,7 @@ minetest.register_node("digicontrol:filter", {
 	after_place_node = digilines.update_autoconnect,
 	after_destruct = digilines.update_autoconnect,
 	on_construct = function(pos)
-		minetest.get_meta(pos):set_string("formspec", "size[6,3]".."field[1,1;4,1;channel;Channel Filter (empty for any);${channel}]".."checkbox[1,1.2;matchstart;Match all starting with;false]".."button_exit[2,2;2,1;exit;Save]")
+		minetest.get_meta(pos):set_string("formspec", "size[6,3]".."field[1,1;4,1;channel;Channel Filter (empty for any);${channel}]".."checkbox[1,1.2;matchstart;Match all starting with;false]".."button_exit[2,2;2,1;exit;Proceed]")
 	end,
 	on_receive_fields = function(pos, _, fields, sender)
 		if minetest.is_protected(pos, sender:get_player_name()) then return end
@@ -30,7 +30,7 @@ minetest.register_node("digicontrol:filter", {
 		end
 		if fields.matchstart then
 			minetest.get_meta(pos):set_string("matchstart", fields.matchstart)
-			minetest.get_meta(pos):set_string("formspec", "size[6,3]".."field[1,1;4,1;channel;Channel Filter (empty for any);${channel}]".."checkbox[1,1.2;matchstart;Match all starting with;"..tostring(fields.matchstart).."]".."button_exit[2,2;2,1;exit;Save]")
+			minetest.get_meta(pos):set_string("formspec", "size[6,3]".."field[1,1;4,1;channel;Channel Filter (empty for any);${channel}]".."checkbox[1,1.2;matchstart;Match all starting with;"..tostring(fields.matchstart).."]".."button_exit[2,2;2,1;exit;Proceed]")
 		end
 	end,
 	digiline = {
